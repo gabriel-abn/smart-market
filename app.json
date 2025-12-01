@@ -1,0 +1,29 @@
+{
+	"expo": {
+		"name": "SmartMarket",
+		"slug": "smart-market",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"userInterfaceStyle": "light",
+		"splash": {
+			"resizeMode": "contain",
+			"backgroundColor": "#6200EE"
+		},
+		"assetBundlePatterns": [
+			"**/*"
+		],
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.smartmarket.app"
+		},
+		"android": {
+			"adaptiveIcon": {
+				"backgroundColor": "#6200EE"
+			},
+			"package": "com.smartmarket.app"
+		},
+		"web": {
+			"favicon": "./assets/favicon.png"
+		}
+	}
+}
