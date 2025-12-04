@@ -22,11 +22,14 @@ const ProductItem = ({ product, onEdit, onDelete, onTogglePurchased }) => {
 		>
 			<Card.Content>
 				<View style={styles.container}>
-					<Checkbox
-						status={isPurchased ? 'checked' : 'unchecked'}
-						onPress={() => onTogglePurchased(product.id, !isPurchased)}
-						color={theme.colors.success}
-					/>
+					<View style={styles.checkboxContainer}>
+						<Checkbox.Android
+							status={isPurchased ? 'checked' : 'unchecked'}
+							onPress={() => onTogglePurchased(product.id, !isPurchased)}
+							color={theme.colors.success}
+							uncheckedColor={theme.colors.textSecondary}
+						/>
+					</View>
 
 					<View style={styles.info}>
 						<Text
@@ -118,6 +121,11 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flexDirection: 'row',
+		alignItems: 'center'
+	},
+	checkboxContainer: {
+		marginRight: theme.spacing.xs,
+		justifyContent: 'center',
 		alignItems: 'center'
 	},
 	info: {
