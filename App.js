@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import {
 	Alert,
 	FlatList,
-	SafeAreaView,
 	StatusBar,
 	StyleSheet,
 	Text,
 	View
 } from 'react-native';
-import { ActivityIndicator, Appbar, FAB } from 'react-native-paper';
+import { ActivityIndicator, Appbar, FAB, PaperProvider } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AddProductModal from './components/AddProductModal';
 import ProductItem from './components/ProductItem';
 import TotalSummary from './components/TotalSummary';
@@ -21,7 +21,7 @@ import {
 } from './services/productService';
 import { theme } from './styles/theme';
 
-export default function App() {
+function MainApp() {
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [modalVisible, setModalVisible] = useState(false);
@@ -104,7 +104,7 @@ export default function App() {
 	}
 
 	return (
-		<SafeAreaView style={styles.container}>
+		<View style={styles.container}>
 			<StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
 
 			{/* Header */}
@@ -162,7 +162,17 @@ export default function App() {
 				onPress={handleOpenAddModal}
 				color={theme.colors.surface}
 			/>
-		</SafeAreaView>
+		</View>
+	);
+}
+
+export default function App() {
+	return (
+		<SafeAreaProvider>
+			<PaperProvider>
+				<MainApp />
+			</PaperProvider>
+		</SafeAreaProvider>
 	);
 }
 
