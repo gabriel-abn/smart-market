@@ -6,16 +6,13 @@ import { theme } from '../styles/theme';
  * Componente que exibe o resumo da compra
  */
 const TotalSummary = ({ products }) => {
-	// Calcula estatísticas
 	const totalProducts = products.length;
 	const purchasedProducts = products.filter(p => p.comprado).length;
 
-	// Calcula total geral
 	const totalValue = products.reduce((sum, product) => {
 		return sum + (product.quantidade * product.precoUnitario);
 	}, 0);
 
-	// Calcula total de produtos comprados
 	const purchasedValue = products
 		.filter(p => p.comprado)
 		.reduce((sum, product) => {

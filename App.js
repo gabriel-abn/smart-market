@@ -27,7 +27,6 @@ function MainApp() {
 	const [modalVisible, setModalVisible] = useState(false);
 	const [editingProduct, setEditingProduct] = useState(null);
 
-	// Subscreve aos produtos no Firestore
 	useEffect(() => {
 		const unsubscribe = subscribeToProducts((fetchedProducts) => {
 			setProducts(fetchedProducts);
@@ -37,7 +36,6 @@ function MainApp() {
 		return () => unsubscribe();
 	}, []);
 
-	// Adiciona ou edita produto
 	const handleSaveProduct = async (product) => {
 		try {
 			if (editingProduct) {
@@ -51,13 +49,10 @@ function MainApp() {
 		}
 	};
 
-	// Abre modal para editar
 	const handleEditProduct = (product) => {
 		setEditingProduct(product);
 		setModalVisible(true);
 	};
-
-	// Deleta produto com confirmação
 	const handleDeleteProduct = (id) => {
 		Alert.alert(
 			'Confirmar exclusão',
@@ -79,7 +74,6 @@ function MainApp() {
 		);
 	};
 
-	// Marca/desmarca como comprado
 	const handleTogglePurchased = async (id, comprado) => {
 		try {
 			await markAsPurchased(id, comprado);
@@ -88,7 +82,6 @@ function MainApp() {
 		}
 	};
 
-	// Abre modal para adicionar novo produto
 	const handleOpenAddModal = () => {
 		setEditingProduct(null);
 		setModalVisible(true);
@@ -107,7 +100,6 @@ function MainApp() {
 		<View style={styles.container}>
 			<StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
 
-			{/* Header */}
 			<Appbar.Header style={styles.header}>
 				<Appbar.Content
 					title="SmartMarket"
@@ -115,10 +107,8 @@ function MainApp() {
 				/>
 			</Appbar.Header>
 
-			{/* Resumo da Compra */}
 			<TotalSummary products={products} />
 
-			{/* Lista de Produtos */}
 			{products.length === 0 ? (
 				<View style={styles.emptyContainer}>
 					<Text style={styles.emptyText}>
@@ -144,7 +134,6 @@ function MainApp() {
 				/>
 			)}
 
-			{/* Modal de Adicionar/Editar */}
 			<AddProductModal
 				visible={modalVisible}
 				onClose={() => {
@@ -155,7 +144,6 @@ function MainApp() {
 				editingProduct={editingProduct}
 			/>
 
-			{/* Botão Flutuante de Adicionar */}
 			<FAB
 				icon="plus"
 				style={styles.fab}

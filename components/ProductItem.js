@@ -22,14 +22,12 @@ const ProductItem = ({ product, onEdit, onDelete, onTogglePurchased }) => {
 		>
 			<Card.Content>
 				<View style={styles.container}>
-					{/* Checkbox para marcar como comprado */}
 					<Checkbox
 						status={isPurchased ? 'checked' : 'unchecked'}
 						onPress={() => onTogglePurchased(product.id, !isPurchased)}
 						color={theme.colors.success}
 					/>
 
-					{/* Informações do produto */}
 					<View style={styles.info}>
 						<Text
 							style={[
@@ -68,7 +66,6 @@ const ProductItem = ({ product, onEdit, onDelete, onTogglePurchased }) => {
 						</View>
 					</View>
 
-					{/* Total do produto */}
 					<View style={styles.totalContainer}>
 						<Text
 							style={[
@@ -88,7 +85,6 @@ const ProductItem = ({ product, onEdit, onDelete, onTogglePurchased }) => {
 						</Text>
 					</View>
 
-					{/* Botões de ação */}
 					<View style={styles.actions}>
 						<IconButton
 							icon="pencil"

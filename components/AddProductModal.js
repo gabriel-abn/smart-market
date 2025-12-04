@@ -20,7 +20,6 @@ const AddProductModal = ({ visible, onClose, onSave, editingProduct }) => {
 	const [precoUnitario, setPrecoUnitario] = useState('');
 	const [errors, setErrors] = useState({});
 
-	// Preenche os campos se estiver editando
 	useEffect(() => {
 		if (editingProduct) {
 			setNomeProduto(editingProduct.nomeProduto || '');
@@ -94,7 +93,6 @@ const AddProductModal = ({ visible, onClose, onSave, editingProduct }) => {
 						{editingProduct ? 'Editar Produto' : 'Adicionar Produto'}
 					</Text>
 
-					{/* Nome do Produto */}
 					<View style={styles.inputContainer}>
 						<Text style={styles.label}>Nome do Produto *</Text>
 						<TextInput
@@ -109,7 +107,6 @@ const AddProductModal = ({ visible, onClose, onSave, editingProduct }) => {
 						)}
 					</View>
 
-					{/* Quantidade */}
 					<View style={styles.inputContainer}>
 						<Text style={styles.label}>Quantidade *</Text>
 						<TextInput
@@ -125,7 +122,6 @@ const AddProductModal = ({ visible, onClose, onSave, editingProduct }) => {
 						)}
 					</View>
 
-					{/* Preço Unitário */}
 					<View style={styles.inputContainer}>
 						<Text style={styles.label}>Preço Unitário (R$) *</Text>
 						<TextInput
@@ -141,7 +137,6 @@ const AddProductModal = ({ visible, onClose, onSave, editingProduct }) => {
 						)}
 					</View>
 
-					{/* Botões */}
 					<View style={styles.buttonContainer}>
 						<Button
 							mode="outlined"
